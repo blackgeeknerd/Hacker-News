@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+    
+        <div class='container'>
+            <div>
+                {% for new in news%}
+                    {%  if new.by %}
+                        <p>By: {{new.by}}</p>
+                    {%endif %}
+                    {% if new.username %}
+                        <p>Username: {{new.username}}</p>
+                    {% endif %}
+                        <p>Time Posted: {{new.time | timesince }}</p>
+                        <p>Title: {{new.title}}</p>
+                        <p>Type: {{new.type}}</p>
+                    {% if new.text %}
+                        <p>Text:{{new.text | truncatewords:50}}</p>
+                    {% else %}
+                        <p>Url: <a href={{new.url}}>{{new.url}}</a></p>
+                    {% endif %}
+                
+                    {% if new.username %}
+                    <a href={% url 'edit-news' new.id %}><button type="button" class="btn btn-primary btn-sm">Edit news</button></a>
+                    <a href="{% url 'delete-news' new.id %}"><button type="button" class="btn btn-danger btn-sm">Delete News</button></a>  
+                    {% endif %}
+                    <hr>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class='text-center'>
+            {% if news.has_previous %}
+                <a href="{% url 'get-news' %}?page={{news.previous_page_number}}"><button type="button" class="btn btn-primary btn-lg">Previous</button></a>
+            {% endif %}
+            {% if news.has_next %}
+                <a href="{% url 'get-news' %}?page={{news.next_page_number}}"><button type="button" class="btn btn-danger btn-lg">Next</button></a>
+
+            {% endif %}
+        </div>
+{% endblock %}

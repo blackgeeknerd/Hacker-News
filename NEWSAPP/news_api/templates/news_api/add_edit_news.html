@@ -1,0 +1,20 @@
+
+{% extends 'main.html' %}
+
+{% load bootstrap %}
+{% block content %}
+        <h2>Create and Post News</h2>
+        <div class="mb-3">
+            <form class="form-control form-horizontal" method = "POST" action=" ">
+                {% csrf_token %}
+                {{ form|bootstrap_horizontal }}
+                <br>
+                <div class='text-center'>
+                  <button type="submit" value='Submit' class=" btn btn-primary btn-lg">Submit</button></a>
+                </div>
+            </form>  
+    
+    </div>
+
+  
+{% endblock %}
