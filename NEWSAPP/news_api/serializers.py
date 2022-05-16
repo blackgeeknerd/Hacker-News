@@ -6,4 +6,4 @@ from .models import NewsDB
 class NewsDbSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsDB
-        fields= ('username', 'news_id', 'score', 'title', 'text', 'url', 'type')
+        fields= ('username', 'by', 'news_id', 'score', 'title', 'text', 'url', 'type')

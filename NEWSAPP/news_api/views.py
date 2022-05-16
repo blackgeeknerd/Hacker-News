@@ -28,11 +28,9 @@ def home(request):
         Q(by__icontains=q) |
         Q(title__icontains=q) |
         Q(score__icontains=q) |
-        Q(type__icontains=q)
+        Q(type__icontains=q) |
+        Q(username__icontains=q)
     ) 
-    
-    
-    query_size = NewsDB.objects.count()
       
     p = Paginator(news_search, 5)
     page_num = request.GET.get('page', 1)
@@ -43,11 +41,10 @@ def home(request):
         page = p.page(1)
         
         
-    context = {'news': page, 'news_search': news_search, 'query_size': query_size}
+    context = {'news_search': news_search}
     return render(request, 'news_api/home.html', context)
 
-        
-    # return render(request, 'news_api/home.html', context)
+    
 
 
 def get_news(request):
@@ -64,7 +61,9 @@ def get_news(request):
         Q(by__icontains=q) |
         Q(title__icontains=q) |
         Q(score__icontains=q) |
-        Q(type__icontains=q)
+        Q(type__icontains=q) |
+        Q(username__icontains=q)
+        
     ) 
     
     #paginator instance with 5 news per page
@@ -120,3 +119,4 @@ def deleteNews(request, pk):
 class NewsDBViewSet(viewsets.ModelViewSet):
     queryset = NewsDB.objects.all()
     serializer_class = NewsDbSerializer
+    

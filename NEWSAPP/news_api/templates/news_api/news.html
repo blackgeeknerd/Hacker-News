@@ -17,10 +17,10 @@
                         <p>Type: {{new.type}}</p>
                     {% if new.text %}
                         <p>Text:{{new.text | truncatewords:50}}</p>
-                    {% else %}
+                    {% endif %}
+                    {% if new.url %}
                         <p>Url: <a href={{new.url}}>{{new.url}}</a></p>
                     {% endif %}
-                
                     {% if new.username %}
                     <a href={% url 'edit-news' new.id %}><button type="button" class="btn btn-primary btn-sm">Edit news</button></a>
                     <a href="{% url 'delete-news' new.id %}"><button type="button" class="btn btn-danger btn-sm">Delete News</button></a>  
@@ -36,7 +36,9 @@
             {% endif %}
             {% if news.has_next %}
                 <a href="{% url 'get-news' %}?page={{news.next_page_number}}"><button type="button" class="btn btn-danger btn-lg">Next</button></a>
-
+            
             {% endif %}
+        <hr>
+
         </div>
 {% endblock %}

@@ -5,5 +5,5 @@ class CreateNewsForm(ModelForm):
     class Meta:
         model = NewsDB
         fields = '__all__'
-        exclude = ['time', 'by',]
+        exclude = ['time', 'by']
         

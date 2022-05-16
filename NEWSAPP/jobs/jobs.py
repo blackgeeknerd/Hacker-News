@@ -18,8 +18,7 @@ def schedule_api():
     """
     
     empt = []
-    urlList = []
-    
+    counter= 0
     url = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
     urlreal = 'https://hacker-news.firebaseio.com/v0/item/{}.json?print=pretty'
 
@@ -42,8 +41,10 @@ def schedule_api():
         text=req_json.get('text', ""),
         url=req_json.get('url', ""),
         type=req_json.get('type', ""),
-        title=req_json['title'],
+        title=req_json.get('title', ""),
    
     )
-    print('hello !st 3 minutes..check database')
+    counter = counter + 1
+    
+    print("'{}' 5 minutes..check database".format(counter))
     

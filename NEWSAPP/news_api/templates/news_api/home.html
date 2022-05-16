@@ -1,47 +1,127 @@
 {% extends 'main.html' %}
 
 
-{% block content %}
-    
-        <div class='container'>
-            <div>
-                {%if query_size == 0%}
-                        <p>Hello</p> 
-                {% else %}
-                        {% for new in news%}
-                                {%  if new.by %}
-                                        <p>By: {{new.by}}</p>
-                                {%endif %}
-                                {% if new.username %}
-                                        <p>Username: {{new.username}}</p>
-                                {% endif %}
-                                        <p>Time Posted: {{new.time | timesince }}</p>
-                                        <p>Title: {{new.title}}</p>
-                                        <p>Type: {{new.type}}</p>
-                                {% if new.text %}
-                                        <p>Text:{{new.text | truncatewords:50}}</p>
-                                {% else %}
-                                        <p>Url: <a href={{new.url}}>{{new.url}}</a></p>
-                                {% endif %}
-                
-                                {% if new.username %}
-                                <a href={% url 'edit-news' new.id %}><button type="button" class="btn btn-primary btn-sm">Edit news</button></a>
-                                <a href="{% url 'delete-news' new.id %}"><button type="button" class="btn btn-danger btn-sm">Delete News</button></a>  
-                                {% endif %}
-                         
-                               <hr>
-                {% endfor %}
+    {% block content %}
 
-                {% endif %}
+    <!-- Star Services
+    ============================================= -->
+    <div class="services-list-area overflow-hidden default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="heading-center text-center">
+                        <h5>Steady UnDiluted Tech News </h5>
+                        <h2>We bring <br>you steady flow of news </h2>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class='text-center'>
-            {% if news.has_previous %}
-                <a href="{% url 'get-news' %}?page={{news.previous_page_number}}"><button type="button" class="btn btn-primary btn-lg">Previous</button></a>
-            {% endif %}
-            {% if news.has_next %}
-                <a href="{% url 'get-news' %}?page={{news.next_page_number}}"><button type="button" class="btn btn-danger btn-lg">Next</button></a>
-
-            {% endif %}
+        <div class="container">
+            <div class="services-list-items">
+                <div class="row">
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="top">
+                                <i class="flaticon-secure"></i>
+                                <h4>You can create stories</h4>
+                            </div>
+                            <p>
+                                And post it instantly on our page
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="top">
+                                <i class="flaticon-seo"></i>
+                                <h4>Read Latest Updated news every 5mins</h4>
+                            </div>
+                            <p>
+                                Steady unfiltered News 
+                            </p>
+                          
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="top">
+                                <i class="flaticon-complaint"></i>
+                                <h4>Easy Search</h4>
+                            </div>
+                            <p>
+                                You can search by name, username, type, or title to make it easier to access news
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
         </div>
-{% endblock %}
+    </div>
+    <!-- End Services -->
+
+    <!-- Star Work Process
+    ============================================= -->
+    <div class="our-process-area text-center relative default-padding-bottom bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="heading-center text-center">
+                        <h5>Easy Api Access</h5>
+                        <h2> http://127.0.0.1:8000/news-api/newsdb/ <br> For both POST and GET method</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="process-list-items">
+                <div class="row">
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="icon">
+                                <i class="fal fa-analytics"></i>
+                                <span>01</span>
+                            </div>
+                            <h4>Update News</h4>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="icon">
+                                <i class="fal fa-chess"></i>
+                                <span>02</span>
+                            </div>
+                            <h4>Delete News</h4>
+                            
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-lg-4 col-md-6 single-item">
+                        <div class="item">
+                            <div class="icon">
+                                <i class="fal fa-box-check"></i>
+                                <span>03</span>
+                            </div>
+                            <h4>Create News</h4>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Work Process -->
+
+   
+    {% endblock %}
+
+   
