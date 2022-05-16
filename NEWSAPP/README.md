@@ -49,7 +49,7 @@ pip install -r requirements.txt
 - Delete Stories created by Users but not News/Stories gotten from the New Api
 - Search by Username, By(name), Title and Type 
 ### APi  http://127.0.0.1:8000/news-api/newsdb/
-- Get least of Latest News
+- Get list of Latest News
 - Post News
  
 
