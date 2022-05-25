@@ -41,8 +41,7 @@ def schedule_api():
         text=req_json.get('text', ""),
         url=req_json.get('url', ""),
         type=req_json.get('type', ""),
-        title=req_json.get('title', ""),
-   
+        title=req_json.get('title', ""), 
     )
     counter = counter + 1
     
